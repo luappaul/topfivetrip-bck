@@ -12,8 +12,8 @@ const getOne = id => userModel.findById(id);
 
 const deleteOne = id => userModel.findOneAndDelete(id);
 
-const updateOne = (id, catName) =>
-  userModel.findOneAndUpdate({ _id: id }, { name: catName });
+const updateOne = (id, data) =>
+  userModel.findOneAndUpdate({ _id: id }, { $set: { location: data } });
 
 router.post("/", (req, res) => {
   create(req.body)
@@ -43,7 +43,8 @@ router.delete("/:id", (req, res) => {
 });
 
 router.patch("/:id", (req, res) => {
-  updateOne(req.params.id, req.body.name)
+  console.log(req.body.location);
+  updateOne(req.params.id, req.body.location)
     .then(dbRes => res.status(200).json(dbRes))
     .catch(dbErr => res.send(dbErr));
 });
