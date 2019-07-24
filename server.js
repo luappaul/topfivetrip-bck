@@ -41,12 +41,14 @@ const APIUser = require("./api/user");
 const index = require("./routes/index");
 const destinationsAPI = require("./api/destinations");
 const citiesAPI = require("./api/cities");
+const datesAPI = require("./api/dates");
 
 app.use(index);
 app.use("/", auth);
 app.use("/api/user", APIUser.router);
 app.use("/api/destinations", destinationsAPI.router);
 app.use("/api/cities", citiesAPI.router);
+app.use("/api/dates", datesAPI.router);
 
 app.listen(process.env.PORT, () => {
   console.log("App hosted on: ", process.env.backendURL);

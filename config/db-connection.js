@@ -8,6 +8,10 @@ const mongoose = require("mongoose");
 //   .then(res => console.log(res))
 //   .catch(err => console.log(err));
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true }, () => {
-  console.log("connected to the database");
-});
+mongoose.connect(
+  process.env.MONGODB_URI,
+  { useNewUrlParser: true, useFindAndModify: false },
+  () => {
+    console.log("connected to the database");
+  }
+);

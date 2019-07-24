@@ -94,7 +94,7 @@ router.post("/login", (req, res, next) => {
         return res.json({ message: "Something went wrong logging in" });
       }
 
-      const { _id: id, name, lastname, email } = req.user;
+      const { _id: id, name, lastname, email, dates } = req.user;
       //   next(/
       res.status(200).json({
         loginStatus: true,
@@ -102,7 +102,8 @@ router.post("/login", (req, res, next) => {
           id,
           name,
           lastname,
-          email
+          email,
+          dates
         }
       });
       //   );

@@ -28,7 +28,10 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
+  console.log(req.params.id);
   getOne(req.params.id)
+    .populate("dates")
+    .populate("destinations")
     .then(user => res.status(200).json(user))
     .catch(dbErr => res.send(dbErr));
 });
